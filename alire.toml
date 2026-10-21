@@ -1,0 +1,15 @@
+name = "win32_hash_argon2"
+description = ""
+version = "0.1.0-dev"
+
+authors = ["Private"]
+maintainers = ["Private <tumdespt@protonmail.com>"]
+maintainers-logins = ["EliAvila1"]
+licenses = "Apache-2.0"
+website = ""
+tags = []
+
+executables = ["win32_hash_argon2"]
+
+[[depends-on]]
+gnatprove = "^16.1.0"

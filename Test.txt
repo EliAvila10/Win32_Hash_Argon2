@@ -1,0 +1,256 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+PUBLIC_HASH / HASH
+---------------------------------------------------------------------------------------------------------------------------------------
+
+1. Case : Entropy Providers Failed => 
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Exception Message : Entropy providers failed
+Exception Name    : ARGON2_HASH_DATA.HASH.ENTROPY_SALT_ERROR
+Failed [ Status ] = 2147483647
+
+Password => 0000000000000000
+Hash     => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+[2026-10-20 19:51:01] process terminated successfully, elapsed time: 00.38s
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+2. Case : Constraint Error =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Exception Message : argon2_hash_data.adb:111 range check failed
+Exception Name    : CONSTRAINT_ERROR
+Failed [ Status ] = 2147483647
+
+Password => 0000000000000000
+Hash     => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+[2026-10-20 19:51:57] process terminated successfully, elapsed time: 00.37s
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+3. Case : Argon2 Error =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Exception Message : ARGON2_SECRET_TOO_SHORT         
+Exception Name    : ARGON2_HASH_DATA.HASH.ARGON2_FAILED
+Failed [ Status ] = 2147483647
+
+Password => 0000000000000000
+Hash     => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+[2026-10-20 19:52:49] process terminated successfully, elapsed time: 00.48s
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+4. Case : Argon2 Error =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Exception Message : Argon invalid format
+Exception Name    : ARGON2_HASH_DATA.HASH.ARGON2_FAILED
+Failed [ Status ] = 2147483647
+
+Password => 0000000000000000
+Hash     => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+[2026-10-20 19:54:05] process terminated successfully, elapsed time: 00.49s
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+5. Case : Any other error =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Exception Message : argon2_hash_data.adb:137
+Exception Name    : ADA.IO_EXCEPTIONS.LAYOUT_ERROR
+Failed [ Status ] = 2147483647
+
+Password => 0000000000000000
+Hash     => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+[2026-10-20 19:55:17] process terminated successfully, elapsed time: 00.50s
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------
+PUBLIC_VERIFY / VERIFY
+---------------------------------------------------------------------------------------------------------------------------------------
+
+1. Case : Constraint Error =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Success [ Status ] = 0
+
+Password => 0000000000000000
+Hash     => $argon2id$v=19$m=65536,t=3,p=4$uMcm5mpJq7R3iL3jkLIiWzwwXfoRTlZX8HVE/d0eRPg$4kpCsDqH9jWX5GRP+Ld+nAAe86/vcSc7OjjbFsttS6Y0
+
+Verifying...
+
+Password after copying => 0000000000000000
+
+Exception Message : argon2_hash_data.adb:263 length check failed
+Exception Name    : CONSTRAINT_ERROR
+
+Failed [ Status ] = 2147483647
+
+Unsuccessful verification!
+Password => 0000000000000000
+Password => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+===============================
+| Example with same passwords |
+===============================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Success [ Status ] = 0
+
+Password => 0000000000000000
+Hash     => $argon2id$v=19$m=65536,t=3,p=4$5X27RBN4u8HRE0R5gu3+lhKgIR9/eTWwp+V3O6B1v5Y$a+qrJVwsO7L8itv1fvtRupVYwTLz/I9JizQJoMNIfQ40
+
+Verifying...
+
+Password after copying => 0000000000000000
+
+Exception Message : argon2_hash_data.adb:263 length check failed
+Exception Name    : CONSTRAINT_ERROR
+
+Failed [ Status ] = 2147483647
+
+Unsuccessful verification!
+Password => 0000000000000000
+Password => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+[2026-10-20 20:00:37] process terminated successfully, elapsed time: 00.61s
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+2. Case 2 : Argon2 Error =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Success [ Status ] = 0
+
+Password => 0000000000000000
+Hash     => $argon2id$v=19$m=65536,t=3,p=4$lD3yau4xXd9wGRXKnn75+DXBtfsqRGlfDm3vbJFa2eg$u5AKUWmkUJd9YVMUxBVvdFBFAKBixRHFvux2h0uqSYQ0
+
+Verifying...
+
+Password after copying => 0000000000000000
+
+Exception Message : ARGON2_VERIFY_MISMATCH          
+Exception Name    : ARGON2_HASH_DATA.VERIFY.ARGON2_FAILED
+
+Failed [ Status ] =-35
+
+Unsuccessful verification!
+Password => 0000000000000000
+Password => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+3. Case : Any other =>
+====================================
+| Example with different passwords |
+====================================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Success [ Status ] = 0
+
+Password => 0000000000000000
+Hash     => $argon2id$v=19$m=65536,t=3,p=4$UopEG8FL9mRiYSUS8ju6Euq+kTfl95Lj2nh1ArCq/x4$uopYwb4qY1RMaDhNrnOwRPFxtnHcmIP1Z6wp1WJxCcY0
+
+Verifying...
+
+Password after copying => 0000000000000000
+
+Argon2 Error      : ARGON2_VERIFY_MISMATCH          
+
+Exception Message : argon2_hash_data.adb:272
+Exception Name    : ADA.IO_EXCEPTIONS.DATA_ERROR
+
+Failed [ Status ] =-35
+
+Unsuccessful verification!
+Password => 0000000000000000
+Password => 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+===============================
+| Example with same passwords |
+===============================
+
+Password after copying => 0000000000000000
+
+Hashing...
+
+Success [ Status ] = 0
+
+Password => 0000000000000000
+Hash     => $argon2id$v=19$m=65536,t=3,p=4$NvzaRMFIUbL6RkL0XjxU4OgLoOz1F7PermMgts8AT2g$DrxQ90FdAWph++MQJ5JdCsnzNU03aRm+l8e8WumAKQs0
+
+Verifying...
+
+Password after copying => 0000000000000000
+
+
+Exception Message : argon2_hash_data.adb:272
+Exception Name    : ADA.IO_EXCEPTIONS.DATA_ERROR
+
+raised ADA.ASSERTIONS.ASSERTION_ERROR : failed postcondition from argon2_hash_data.ads:222
+[win32_hash_argon2\bin\win32_hash_argon2.exe]
+0x4151a6 Ada.Finalization at s-assert.adb:46
+0x451870 Argon2_Errors.Get_Error_Message at Argon2_Hash_Data.ads:222
+0x45103e Argon2_Errors.Get_Error_Message at argon2_hash_data.adb:347
+0x4508af Argon2_Errors.Get_Error_Message at argon2_hash_data.adb:354
+0x452695 Argon2_Errors.Get_Error_Message at win32_hash_argon2.adb:161
+0x44d66d Win32_Hash_Argon2 at win32_hash_argon2.adb:224
+0x451a6c Argon2_Errors.Get_Error_Message at b__win32_hash_argon2.adb:272
+0x401423 __tmainCRTStartup at ???
+0x40113b mainCRTStartup at ???
+[C:\Windows\System32\KERNEL32.DLL]
+0x7ffabfc4dda5
+[C:\Windows\SYSTEM32\ntdll.dll]
+0x7ffabfe7ee4a
+[2026-10-20 20:03:31] process exited with status 1, elapsed time: 00.80s

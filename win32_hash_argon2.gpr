@@ -1,0 +1,28 @@
+with "config/win32_hash_argon2_config.gpr";
+project Win32_Hash_Argon2 is
+
+   for Source_Dirs use ("src/", "config/");
+   for Object_Dir use "obj/" & Win32_Hash_Argon2_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Exec_Dir use "bin";
+   for Main use ("win32_hash_argon2.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada")
+      use Win32_Hash_Argon2_Config.Ada_Compiler_Switches;
+   end Compiler;
+
+   package Binder is
+      for Switches ("Ada") use ("-Es");
+   end Binder;
+
+   package Install is
+      for Artifacts (".") use ("share");
+   end Install;
+
+   package Linker is
+      for Switches ("Ada")
+      use ("-Wl," & Project'Project_Dir & "Argon2OptDll.lib");
+   end Linker;
+
+end Win32_Hash_Argon2;
