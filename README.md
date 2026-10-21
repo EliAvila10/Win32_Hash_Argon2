@@ -22,8 +22,8 @@ Cryptographically secure Argon2id password hashing and verification library for 
 - Argon2 API Faults (Argon2_Failed): Wraps and isolates low-level C library errors, mapping clear diagnostic codes while purging sensitive buffers.
 
  ## Build and run
- alr build
- alr run
+ - alr build
+ - alr run
 
  - alr run executes the win32_hash_argon2 executable declared in alire.toml,
   the demo in win32_hash_argon2.adb, which hashes a password and then verifies it twice:
